@@ -1,9 +1,12 @@
 ﻿using CarSimulator;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ServicesLibrary.Services;
 
-IHost host = Host.CreateDefaultBuilder()
-    .ConfigureServices(services => {
+IHost host = Host.CreateDefaultBuilder(args)
+    .ConfigureServices(services => 
+    {
+        services.AddTransient<IDrivingServices, DrivingServices>();
         services.AddSingleton<Application>();
     })
     .Build();

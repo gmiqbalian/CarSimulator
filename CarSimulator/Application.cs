@@ -1,4 +1,5 @@
 ﻿using CarSimulator.Models;
+using ServicesLibrary.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,14 @@ namespace CarSimulator
 {
     public class Application
     {
+        private readonly IDrivingServices _drivingServices;
+        public Application(IDrivingServices drivingServices)
+        {
+            _drivingServices = drivingServices;
+        }
         public void Run()
         {
-            while(true)
+            while (true)
             {
                 MainMenu.ShowMainMenu();
                 var selection = MainMenu.GetSelection();
@@ -21,7 +27,10 @@ namespace CarSimulator
                 switch (selection)
                 {
                     case 1:
+                        _drivingServices.Drive("right");
+                        Thread.Sleep(1000);
                         Console.WriteLine(selection);
+
                         break;
                     case 2:
                         Console.WriteLine(selection);
