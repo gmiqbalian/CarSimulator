@@ -31,7 +31,6 @@ namespace CarSimulator
                 {
                     case 1:
                         _drivingServices.Drive("South", "right");
-                        _driverServices.GetDriver();
                         Console.ReadKey();
                         break;
                     case 2:
@@ -39,9 +38,11 @@ namespace CarSimulator
                         Console.ReadKey();
                         break;
                     case 3:
+                        _drivingServices.Drive("", "Straight");
                         Console.WriteLine(selection);
                         break;
                     case 4:
+                        _drivingServices.Drive("", "Back");
                         Console.WriteLine(selection);
                         break;
                 }

@@ -1,7 +1,11 @@
-﻿namespace ServicesLibrary.Services
+﻿using ServicesLibrary.Models;
+
+namespace ServicesLibrary.Services
 {
     public interface IDriverServices
     {
-        void GetDriver();
+        void FetchDriverFromAPI();
+        Driver GetDriver();
+        void PrintDriverStatus(Driver driver);
     }
 }
