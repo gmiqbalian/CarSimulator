@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ServicesLibrary.Models
 {
-    public class DriverResponse
+    public class Car
     {
-        public IEnumerable<Driver> results { get; set; }
+        public int FuelLevel { get; set; }
+        public string Direction { get; set; }
     }
 }

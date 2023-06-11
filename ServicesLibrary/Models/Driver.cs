@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ServicesLibrary.Models
 {
-    public class DriverDetail
+    public class Driver
     {
         public string gender { get; set; }
         public string email { get; set; }
@@ -26,6 +26,6 @@ namespace ServicesLibrary.Models
         public string date { get; set; }
         public string age { get; set; }
     }
-        public int TirednessLevel { get; set; }
+        public int Fatigue { get; set; }
     }
 }

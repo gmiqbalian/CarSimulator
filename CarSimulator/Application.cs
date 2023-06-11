@@ -30,14 +30,13 @@ namespace CarSimulator
                 switch (selection)
                 {
                     case 1:
-                        _drivingServices.Drive("right");
+                        _drivingServices.Drive("South", "right");
                         _driverServices.GetDriver();
-                        Thread.Sleep(1000);
-                        Console.WriteLine(selection);
-
+                        Console.ReadKey();
                         break;
                     case 2:
-                        Console.WriteLine(selection);
+                        _drivingServices.Drive("South", "left");
+                        Console.ReadKey();
                         break;
                     case 3:
                         Console.WriteLine(selection);

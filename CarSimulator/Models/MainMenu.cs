@@ -16,13 +16,14 @@ namespace CarSimulator.Models
             Console.WriteLine("5. Take Rest");
             Console.WriteLine("6. Refuel Tank");
             Console.WriteLine("7. Exit");
+            Console.WriteLine();
         }
         public static int GetSelection()
         {
             Console.Write("Choose an option: ");
             var selection = int.Parse(Console.ReadLine());
             
-            if (selection > 7)
+            if (selection > 7 || selection < 1)
             {
                 Console.WriteLine("Please choose a valid option", Color.Red);
                 Thread.Sleep(1000);

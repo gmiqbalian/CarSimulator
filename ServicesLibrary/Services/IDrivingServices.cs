@@ -8,6 +8,6 @@ namespace ServicesLibrary.Services
 {
     public interface IDrivingServices
     {
-        public void Drive(string direction);
+        public void Drive(string currentDirection, string driveTo);
     }
 }
