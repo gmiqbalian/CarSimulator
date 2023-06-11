@@ -11,9 +11,12 @@ namespace CarSimulator
     public class Application
     {
         private readonly IDrivingServices _drivingServices;
-        public Application(IDrivingServices drivingServices)
+        private readonly IDriverServices _driverServices;
+
+        public Application(IDrivingServices drivingServices, IDriverServices driverServices)
         {
             _drivingServices = drivingServices;
+            _driverServices = driverServices;
         }
         public void Run()
         {
@@ -28,6 +31,7 @@ namespace CarSimulator
                 {
                     case 1:
                         _drivingServices.Drive("right");
+                        _driverServices.GetDriver();
                         Thread.Sleep(1000);
                         Console.WriteLine(selection);
 

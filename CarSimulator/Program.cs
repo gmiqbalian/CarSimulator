@@ -7,6 +7,7 @@ IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services => 
     {
         services.AddTransient<IDrivingServices, DrivingServices>();
+        services.AddTransient<IDriverServices, DriverServices>();
         services.AddSingleton<Application>();
     })
     .Build();
