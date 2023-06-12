@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServicesLibrary.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace ServicesLibrary.Services
 {
     public interface IDrivingServices
     {
-        public void Drive(string currentDirection, string driveTo);
+        void Drive(string driveTo);
     }
 }

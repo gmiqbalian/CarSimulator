@@ -1,4 +1,5 @@
-﻿using CarSimulator.Models;
+﻿using CarSimulator.Controller;
+using CarSimulator.Models;
 using ServicesLibrary.Services;
 using System;
 using System.Collections.Generic;
@@ -10,16 +11,17 @@ namespace CarSimulator
 {
     public class Application
     {
-        private readonly IDrivingServices _drivingServices;
-        private readonly IDriverServices _driverServices;
+        
+        private readonly ICarController _carController;
 
-        public Application(IDrivingServices drivingServices, IDriverServices driverServices)
+        public Application(ICarController carController)
         {
-            _drivingServices = drivingServices;
-            _driverServices = driverServices;
+            _carController = carController;
         }
         public void Run()
         {
+            var instruction = string.Empty;
+
             while (true)
             {
                 MainMenu.ShowMainMenu();
@@ -30,20 +32,19 @@ namespace CarSimulator
                 switch (selection)
                 {
                     case 1:
-                        _drivingServices.Drive("South", "right");
+                        instruction = "Right";
+                        _carController.Drive(instruction);
+
                         Console.ReadKey();
                         break;
                     case 2:
-                        _drivingServices.Drive("South", "left");
                         Console.ReadKey();
                         break;
                     case 3:
-                        _drivingServices.Drive("", "Straight");
-                        Console.WriteLine(selection);
+                        Console.ReadKey();
                         break;
                     case 4:
-                        _drivingServices.Drive("", "Back");
-                        Console.WriteLine(selection);
+                        Console.ReadKey();
                         break;
                 }
 

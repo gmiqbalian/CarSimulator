@@ -6,8 +6,8 @@ namespace ServicesLibrary.Services
 {
     public class DriverServices : IDriverServices
     {
-        private DriverResponse? drivers { get; set; }
-        public async void FetchDriverFromAPI()
+        private DriverResponse? drivers { get; set; } = null;
+        public async Task<Driver> GetDriver()
         {
             using var client = new HttpClient();
             client.BaseAddress = new Uri("https://randomuser.me");
@@ -22,6 +22,10 @@ namespace ServicesLibrary.Services
                 var responseBody = await response.Content.ReadAsStringAsync();
                 drivers = JsonConvert.DeserializeObject<DriverResponse>(responseBody);
             }
+
+            var driver = drivers.results.First();
+
+            return driver;
         }
         public void PrintDriverStatus(Driver driver)
         {
@@ -30,10 +34,10 @@ namespace ServicesLibrary.Services
             Console.WriteLine();
             Console.WriteLine();
         }
-        public Driver GetDriver()
+        public void IncreaseFatigue(Driver driver)
         {
-            var driver = drivers.results.First();
-            return driver;
+            driver.Fatigue++;
         }
+
     }
 }

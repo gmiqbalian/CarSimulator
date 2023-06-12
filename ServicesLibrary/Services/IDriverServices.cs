@@ -4,8 +4,7 @@ namespace ServicesLibrary.Services
 {
     public interface IDriverServices
     {
-        void FetchDriverFromAPI();
-        Driver GetDriver();
+        Task<Driver> GetDriver();
         void PrintDriverStatus(Driver driver);
     }
 }
