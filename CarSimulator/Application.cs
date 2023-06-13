@@ -21,6 +21,7 @@ namespace CarSimulator
         public void Run()
         {
             var instruction = string.Empty;
+            var car = _carController.SetupCar();
 
             while (true)
             {
@@ -33,7 +34,7 @@ namespace CarSimulator
                 {
                     case 1:
                         instruction = "Right";
-                        _carController.Drive(instruction);
+                        _carController.Drive(instruction, car);
 
                         Console.ReadKey();
                         break;

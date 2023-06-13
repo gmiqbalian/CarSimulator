@@ -9,6 +9,5 @@ namespace ServicesLibrary.Services
 {
     public interface IDrivingServices
     {
-        void Drive(string driveTo);
     }
 }

@@ -11,6 +11,7 @@ IHost host = Host.CreateDefaultBuilder(args)
         services.AddTransient<IDriverServices, DriverServices>();
         services.AddTransient<ICarServices, CarServices>();
         services.AddTransient<ICarController, CarController>();
+        services.AddTransient<IDirectionServices, DirectionServices>();
         services.AddSingleton<Application>();
     })
     .Build();

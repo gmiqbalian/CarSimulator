@@ -1,7 +1,10 @@
-﻿namespace CarSimulator.Controller
+﻿using ServicesLibrary.Models;
+
+namespace CarSimulator.Controller
 {
     public interface ICarController
     {
-        void Drive(string instruction);
+        Car SetupCar();
+        void Drive(string instruction, Car car);
     }
 }

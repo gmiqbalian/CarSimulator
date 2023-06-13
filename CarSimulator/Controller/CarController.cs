@@ -14,33 +14,43 @@ namespace CarSimulator.Controller
         private readonly IDrivingServices _drivingServices;
         private readonly IDriverServices _driverServices;
         private readonly ICarServices _carServices;
-        private Car _car { get; set; }
-        private Driver _driver { get; set; }
-        public CarController(IDrivingServices drivingServices, IDriverServices driverServices, ICarServices carServices)
+        private readonly IDirectionServices _directionServices;
+        public CarController(IDrivingServices drivingServices, IDriverServices driverServices, ICarServices carServices, IDirectionServices directionServices)
         {
             _drivingServices = drivingServices;
             _driverServices = driverServices;
             _carServices = carServices;
-            _car = _carServices.GetNewCar();
-            _driver = _driverServices.GetDriver().Result;
+            _directionServices = directionServices;
         }
-        public void Drive(string instruction)
+        public Car SetupCar()
         {
-            var currentFuelLevel = _car.FuelLevel;
-            var fuelStatus = _carServices.HasEnoughFuel(currentFuelLevel);
-            var fuelLevel = _car.FuelLevel;
+            var car = new Car();
+            car.FuelLevel = 5; //change to 20
+            car.Direction = _directionServices.GetCurrentDirection();
 
-            if(fuelStatus == FuelEnum.Empty)
+            return car;
+        }
+        public void Drive(string instruction, Car car)
+        {
+            if (FuelTankIsEmpty(car))
             {
-                Console.WriteLine("Car is out of fuel. Refuel before moving...");
+                Console.WriteLine("Car is out of fuel. Refuel before moving.");
             }
             else
             {
-                _drivingServices.Drive(instruction);
-                _car.FuelLevel--;
+                car.FuelLevel--;
+                car.Direction = _directionServices.GetNewDirection(car.Direction, instruction);
+
+                Console.WriteLine($"Car is going: {instruction}");
+                Console.WriteLine($"Car direction: {car.Direction}");
             }
-            
-            _carServices.PrintFuelWarning(fuelLevel);
+        }
+
+        public bool FuelTankIsEmpty(Car car)
+        {
+            if(car.FuelLevel == 0)
+                return true;
+            return false;
         }
     }
 }

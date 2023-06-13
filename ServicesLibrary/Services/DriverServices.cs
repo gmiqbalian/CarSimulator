@@ -27,17 +27,5 @@ namespace ServicesLibrary.Services
 
             return driver;
         }
-        public void PrintDriverStatus(Driver driver)
-        {
-            Console.WriteLine($"Name: {driver.name.first} {driver.name.last}");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine();
-        }
-        public void IncreaseFatigue(Driver driver)
-        {
-            driver.Fatigue++;
-        }
-
     }
 }
