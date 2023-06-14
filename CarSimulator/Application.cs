@@ -23,6 +23,7 @@ namespace CarSimulator
             var running = true;
             var instruction = string.Empty;
             var car = _appController.SetupCar();
+            var driver = _appController.GetDriver(20);
 
             while (running)
             {
@@ -33,25 +34,26 @@ namespace CarSimulator
                 {
                     case "1":
                         instruction = "Right";
-                        _appController.Drive(instruction, car);
+                        _appController.Drive(instruction, car, driver);
                         Console.ReadKey();
                         break;
                     case "2":
                         instruction = "Left";
-                        _appController.Drive(instruction, car);
+                        _appController.Drive(instruction, car, driver);
                         Console.ReadKey();
                         break;
                     case "3":
                         instruction = "Straight";
-                        _appController.Drive(instruction, car);
+                        _appController.Drive(instruction, car, driver);
                         Console.ReadKey();
                         break;
                     case "4":
                         instruction = "Reverse";
-                        _appController.Drive(instruction, car);
+                        _appController.Drive(instruction, car, driver);
                         Console.ReadKey();
                         break;
                     case "5":
+                        _appController.TakeRest(driver);
                         Console.ReadKey();
                         break;
                     case "6":
