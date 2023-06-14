@@ -6,5 +6,6 @@ namespace CarSimulator.Controller
     {
         Car SetupCar();
         void Drive(string instruction, Car car);
+        void RefuelTank(Car car);
     }
 }

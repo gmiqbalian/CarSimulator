@@ -32,22 +32,22 @@ namespace CarSimulator
                 switch (selection)
                 {
                     case "1":
-                        instruction = "right";
+                        instruction = "Right";
                         _appController.Drive(instruction, car);
                         Console.ReadKey();
                         break;
                     case "2":
-                        instruction = "left";
+                        instruction = "Left";
                         _appController.Drive(instruction, car);
                         Console.ReadKey();
                         break;
                     case "3":
-                        instruction = "straight";
+                        instruction = "Straight";
                         _appController.Drive(instruction, car);
                         Console.ReadKey();
                         break;
                     case "4":
-                        instruction = "reverse";
+                        instruction = "Reverse";
                         _appController.Drive(instruction, car);
                         Console.ReadKey();
                         break;
@@ -55,6 +55,7 @@ namespace CarSimulator
                         Console.ReadKey();
                         break;
                     case "6":
+                        _appController.RefuelTank(car);
                         Console.ReadKey();
                         break;
                     case "7":

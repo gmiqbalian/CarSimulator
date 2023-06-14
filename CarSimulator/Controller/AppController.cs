@@ -54,5 +54,16 @@ namespace CarSimulator.Controller
         {
             return fuelLevel >= 0 && fuelLevel < 5;
         }
+        public void RefuelTank(Car car)
+        {
+            if(car.FuelLevel == car.MaxFuel) 
+            { 
+                Console.Write("Car tank is already full!");
+                return;
+            }
+            
+            car.FuelLevel = car.MaxFuel;
+            Console.Write($"Car tank refuled successfully! \n {car.FuelLevel} / {car.MaxFuel}");
+        }
     }
 }
