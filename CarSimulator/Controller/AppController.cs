@@ -25,7 +25,8 @@ namespace CarSimulator.Controller
         public Car SetupCar()
         {
             var car = _carServices.GetNewCar(5);
-            
+            car.Direction = _directionServices.GetCurrentDirection();
+
             return car;
         }
         public void Drive(string instruction, Car car)
@@ -40,10 +41,9 @@ namespace CarSimulator.Controller
             car.Direction = _directionServices.GetNewDirection(car.Direction, instruction);
             Console.WriteLine($"Car is going: {instruction}");
             Console.WriteLine($"Car direction: {car.Direction}");
+
             if(FuelTankWarning(car.FuelLevel))
-            {
                 Console.WriteLine($"Fuel level warning: {car.FuelLevel} / {car.MaxFuel}");
-            }
         }
 
         public bool FuelTankIsEmpty(int fuelLevel)

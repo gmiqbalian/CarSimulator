@@ -11,7 +11,7 @@ namespace CarSimulator
 {
     public class Application
     {
-        
+
         private readonly IAppController _appController;
 
         public Application(IAppController appController)
@@ -32,17 +32,29 @@ namespace CarSimulator
                 switch (selection)
                 {
                     case "1":
-                        instruction = "Right";
+                        instruction = "right";
                         _appController.Drive(instruction, car);
                         Console.ReadKey();
                         break;
                     case "2":
+                        instruction = "left";
+                        _appController.Drive(instruction, car);
                         Console.ReadKey();
                         break;
                     case "3":
+                        instruction = "straight";
+                        _appController.Drive(instruction, car);
                         Console.ReadKey();
                         break;
                     case "4":
+                        instruction = "reverse";
+                        _appController.Drive(instruction, car);
+                        Console.ReadKey();
+                        break;
+                    case "5":
+                        Console.ReadKey();
+                        break;
+                    case "6":
                         Console.ReadKey();
                         break;
                     case "7":
