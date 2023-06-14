@@ -9,6 +9,7 @@ namespace ServicesLibrary.Models
     public class Car
     {
         public int FuelLevel { get; set; }
+        public int MaxFuel { get; set; }
         public string Direction { get; set; }
     }
 }

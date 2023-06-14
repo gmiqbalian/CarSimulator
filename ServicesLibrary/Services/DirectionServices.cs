@@ -24,7 +24,7 @@ namespace ServicesLibrary.Services
 
                 newDirection = Directions[newIndex];
             }
-            if (instruction == "Left")
+            else if (instruction == "Left")
             {
                 if (index == 0)
                     newIndex = Directions.Count - 1;

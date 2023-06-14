@@ -5,6 +5,6 @@ namespace ServicesLibrary.Services
 {
     public interface ICarServices
     {
-
+        Car GetNewCar(int maxFuel);
     }
 }

@@ -26,6 +26,7 @@ namespace ServicesLibrary.Models
         public string date { get; set; }
         public string age { get; set; }
     }
-        public int Fatigue { get; set; }
+        public int FatigueLevel { get; }
+        public int MaxFatigue { get; set; }
     }
 }

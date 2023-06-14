@@ -2,7 +2,7 @@
 
 namespace CarSimulator.Controller
 {
-    public interface ICarController
+    public interface IAppController
     {
         Car SetupCar();
         void Drive(string instruction, Car car);

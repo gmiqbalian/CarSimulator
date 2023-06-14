@@ -12,39 +12,44 @@ namespace CarSimulator
     public class Application
     {
         
-        private readonly ICarController _carController;
+        private readonly IAppController _appController;
 
-        public Application(ICarController carController)
+        public Application(IAppController appController)
         {
-            _carController = carController;
+            _appController = appController;
         }
         public void Run()
         {
+            var running = true;
             var instruction = string.Empty;
-            var car = _carController.SetupCar();
+            var car = _appController.SetupCar();
 
-            while (true)
+            while (running)
             {
                 MainMenu.ShowMainMenu();
-                var selection = MainMenu.GetSelection();
-
-                if (selection == 7) return;
+                var selection = Console.ReadLine();
 
                 switch (selection)
                 {
-                    case 1:
+                    case "1":
                         instruction = "Right";
-                        _carController.Drive(instruction, car);
-
+                        _appController.Drive(instruction, car);
                         Console.ReadKey();
                         break;
-                    case 2:
+                    case "2":
                         Console.ReadKey();
                         break;
-                    case 3:
+                    case "3":
                         Console.ReadKey();
                         break;
-                    case 4:
+                    case "4":
+                        Console.ReadKey();
+                        break;
+                    case "7":
+                        running = false;
+                        break;
+                    default:
+                        Console.Write("Please choose a valid option");
                         Console.ReadKey();
                         break;
                 }

@@ -10,7 +10,7 @@ IHost host = Host.CreateDefaultBuilder(args)
         services.AddTransient<IDrivingServices, DrivingServices>();
         services.AddTransient<IDriverServices, DriverServices>();
         services.AddTransient<ICarServices, CarServices>();
-        services.AddTransient<ICarController, CarController>();
+        services.AddTransient<IAppController, AppController>();
         services.AddTransient<IDirectionServices, DirectionServices>();
         services.AddSingleton<Application>();
     })

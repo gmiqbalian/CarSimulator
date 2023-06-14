@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using Console = Colorful.Console;
+﻿using System;
 
 namespace CarSimulator.Models
 {
@@ -17,19 +16,7 @@ namespace CarSimulator.Models
             Console.WriteLine("6. Refuel Tank");
             Console.WriteLine("7. Exit");
             Console.WriteLine();
-        }
-        public static int GetSelection()
-        {
-            Console.Write("Choose an option: ");
-            var selection = int.Parse(Console.ReadLine());
-            
-            if (selection > 7 || selection < 1)
-            {
-                Console.WriteLine("Please choose a valid option", Color.Red);
-                Thread.Sleep(1000);
-            }
-
-            return selection;
+            Console.Write("Please choose an option: ");
         }
     }
 }
