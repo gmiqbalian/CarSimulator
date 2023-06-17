@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace CarSimulator.Models
+namespace ServicesLibrary.Models
 {
-    class MainMenu
+    public class MainMenu
     {
         public static void ShowMainMenu()
         {
             Console.Clear();
-            
+
             Console.WriteLine("1. Drive Right");
             Console.WriteLine("2. Drive Left");
             Console.WriteLine("3. Drive Straight");

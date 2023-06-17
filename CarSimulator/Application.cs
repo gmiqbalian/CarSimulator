@@ -1,5 +1,4 @@
-﻿using CarSimulator.Controller;
-using CarSimulator.Models;
+﻿using ServicesLibrary.Models;
 using ServicesLibrary.Services;
 using System;
 using System.Collections.Generic;
@@ -12,18 +11,24 @@ namespace CarSimulator
     public class Application
     {
 
-        private readonly IAppController _appController;
+        private readonly DrivingService _drivingService;
+        private readonly CarService _carService;
 
-        public Application(IAppController appController)
+        public Application()
         {
-            _appController = appController;
+            _drivingService = new DrivingService();
+            _carService = new CarService();
         }
         public void Run()
         {
             var running = true;
             var instruction = string.Empty;
-            var car = _appController.SetupCar();
-            var driver = _appController.GetDriver(20);
+            
+            var maxTankCapaity = 15;
+            var car = _carService.GetCar(maxTankCapaity);
+            
+            var maxDrivingCapacity = 5;
+            var driver = new Driver(maxDrivingCapacity);
 
             while (running)
             {
@@ -33,31 +38,31 @@ namespace CarSimulator
                 switch (selection)
                 {
                     case "1":
-                        instruction = "Right";
-                        _appController.Drive(instruction, car, driver);
+                        instruction = "right";
+                        _drivingService.Drive(instruction, car, driver);
                         Console.ReadKey();
                         break;
                     case "2":
-                        instruction = "Left";
-                        _appController.Drive(instruction, car, driver);
+                        instruction = "left";
+                        _drivingService.Drive(instruction, car, driver);
                         Console.ReadKey();
                         break;
                     case "3":
-                        instruction = "Straight";
-                        _appController.Drive(instruction, car, driver);
+                        instruction = "straight";
+                        _drivingService.Drive(instruction, car, driver);
                         Console.ReadKey();
                         break;
                     case "4":
-                        instruction = "Reverse";
-                        _appController.Drive(instruction, car, driver);
+                        instruction = "reverse";
+                        _drivingService.Drive(instruction, car, driver);
                         Console.ReadKey();
                         break;
                     case "5":
-                        _appController.TakeRest(driver);
+                        _drivingService.TakeRest(driver);
                         Console.ReadKey();
                         break;
                     case "6":
-                        _appController.RefuelTank(car);
+                        _drivingService.Refuel(car);
                         Console.ReadKey();
                         break;
                     case "7":

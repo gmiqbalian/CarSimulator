@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServicesLibrary.Data
+namespace ServicesLibrary.Enums
 {
-    public enum FuelEnum
+    public enum FatigueStatus
     {
-        Full,
+        IsTired,
         Warning,
-        Empty,
-        Enough
+        Rested
     }
 }

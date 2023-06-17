@@ -28,5 +28,10 @@ namespace ServicesLibrary.Models
     }
         public int FatigueLevel { get; set; }
         public int MaxFatigue { get; set; }
+        public Driver(int maxFatigue)
+        {
+            FatigueLevel = 0;
+            MaxFatigue = maxFatigue;
+        }
     }
 }
