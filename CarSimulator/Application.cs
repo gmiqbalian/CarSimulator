@@ -11,17 +11,10 @@ namespace CarSimulator
     public class Application
     {
 
-        private readonly DrivingService _drivingService;
-        private readonly CarService _carService;
-        private readonly DriverService _driverService;
-        private readonly MessageService _messageService;
-
-        public Application()
+        private readonly IDrivingService _drivingService;
+        public Application(IDrivingService drivingService)
         {
-            _drivingService = new DrivingService();
-            _carService = new CarService();
-            _driverService = new DriverService();
-            _messageService = new MessageService();
+            _drivingService = drivingService;
         }
         public void Run()
         {            
@@ -29,10 +22,10 @@ namespace CarSimulator
             var instruction = string.Empty;
             
             var maxTankCapaity = 15;
-            var car = _carService.GetCar(maxTankCapaity);
+            var car = _drivingService.GetCar(maxTankCapaity);
             
-            var maxDrivingCapacity = 5;
-            var driver = _driverService.FetchDriver();
+            var fatigueCapcity = 10;
+            var driver = _drivingService.GetDriver(fatigueCapcity);
 
             while (running)
             {
@@ -73,7 +66,7 @@ namespace CarSimulator
                         running = false;
                         break;
                     default:
-                        Console.Write("Please choose a valid option");
+                        Console.Write("\n\nPlease choose a valid option");
                         Console.ReadKey();
                         break;
                 }

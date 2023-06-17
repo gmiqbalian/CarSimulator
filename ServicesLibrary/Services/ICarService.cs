@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace ServicesLibrary.Services
 {
-    public class ICarService
+    public interface ICarService
     {
-
+        Car CreateCar(int fuelCapacity);
+        void ChangeDirection(string instruction, Car car);
     }
 }

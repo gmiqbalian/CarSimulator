@@ -10,7 +10,10 @@ namespace ServicesLibrary.Services
 {
     public interface IDrivingService
     {
+        Car GetCar(int fuelCapacity);
+        Driver GetDriver(int fatigueCapacity);
         Status Drive(string instruction, Car car, Driver driver);
+        Status TakeRest(Driver driver);
         Status Refuel(Car car);
     }
 }

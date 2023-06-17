@@ -9,31 +9,32 @@ using System.Threading.Tasks;
 
 namespace ServicesLibrary.Services
 {
-    public class MessageService
+    public class MessageService : IMessageService
     {
         public void PrintStatusMessage(Car car, Driver driver, string instruction)
         {
-            Print.StatusMessage($"Car is moving: {instruction}");
-            Print.StatusMessage($"Direction: {car.Direction}");
+            Print.StatusMessage($"\nCar is moving: {instruction}");
+            Print.StatusMessage($"\nDirection: {car.Direction}");
 
             if (IsFuelWarning(car))
             {
-                Print.WarningMessage($"Fuel warning: {car.FuelLevel} / {car.MaxFuel}");
+                Print.WarningMessage($"\nFuel warning: {car.FuelLevel} / {car.MaxFuel}");
             }
             if (IsFatigueWarning(driver))
             {
-                Print.WarningMessage($"Fatigue warning: {driver.FatigueLevel} / {driver.MaxFatigue}");
+                Print.WarningMessage($"\nFatigue warning: {driver.FatigueLevel} / {driver.MaxFatigue}");
             }
 
-        }
-        private bool IsFuelWarning(Car car)
-        {
-            return true;
+            Print.StatusMessage("\n\nPress any key to continue...");
         }
 
+        private bool IsFuelWarning(Car car)
+        {
+            return car.FuelLevel >= 0 && car.FuelLevel <= 5;
+        }
         private bool IsFatigueWarning(Driver driver)
         {
-            return true;
+            return driver.FatigueLevel >= 7;
         }
     }
 }

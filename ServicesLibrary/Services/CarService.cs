@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace ServicesLibrary.Services
 {
-    public class CarService
+    public class CarService : ICarService
     {
         private readonly List<String> Directions = new List<string> { "North", "East", "South", "West" };
-        public Car GetCar(int fuelCapacity)
+        public Car CreateCar(int fuelCapacity)
         {
             var car = new Car();
 
@@ -25,24 +25,7 @@ namespace ServicesLibrary.Services
 
             return car;
         }
-        public FuelStatus CheckFuel(Car car)
-        {
-            if (car.FuelLevel == 0)
-                return FuelStatus.Empty;
-            if (car.FuelLevel > 0 && car.FuelLevel <= 5)
-                return FuelStatus.Warning;
-            
-            return FuelStatus.Full;
-        }
-        public void PrintStatusMessage(string instruction)
-        {
-            Print.StatusMessage($"Car is moving: {instruction}");
-        }
-        public string Move(string instruction)
-        {
-            return $"Car is moving: {instruction}";
-        }
-        public string ChangeDirection(string instruction, Car car)
+        public void ChangeDirection(string instruction, Car car)
         {            
             if (instruction.ToLower() == "right")
             {
@@ -80,7 +63,6 @@ namespace ServicesLibrary.Services
                         break;
                 }
             }
-            return $"\nDirection is: {car.Direction}";
         }
     }
 }

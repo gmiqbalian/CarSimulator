@@ -10,24 +10,24 @@ namespace ServicesLibrary.Models
     {
         public static void StatusMessage(string message)
         {
-            Console.WriteLine(message);
+            Console.Write(message);
         }
         public static void WarningMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(message);
+            Console.Write(message);
             Console.ResetColor();
         }
         public static void SuccessMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(message);
+            Console.Write(message);
             Console.ResetColor();
         }
         public static void ErrorMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(message);
+            Console.Write(message);
             Console.ResetColor();
         }
     }

@@ -9,26 +9,29 @@ using System.Threading.Tasks;
 
 namespace ServicesLibrary.Services
 {
-    public class DriverService
+    public class DriverService : IDriverService
     {
-        public Driver FetchDriver()
+        public Driver GetDriver(int fatigueCapacity)
         {
+            var driver = new Driver();
+
             using (var client = new HttpClient())
             {
                 var json = client.GetStringAsync("https://randomuser.me/api/").Result;
-                dynamic data  = JsonConvert.DeserializeObject<dynamic>(json);
+                dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
                 var result = data?.results[0];
-
-                var driver = new Driver();
 
                 driver.Gender = result.gender;
                 driver.Name = result.name.first + " " + result.name.last;
                 driver.Cell = result.cell;
                 driver.Phone = result.phone;
                 driver.Age = result.age;
-
-                return driver;
             }
+
+            driver.FatigueLevel = 0;
+            driver.MaxFatigue = fatigueCapacity;
+
+            return driver;
         }
         public FatigueStatus CheckFatigueLevel(Driver driver)
         {
