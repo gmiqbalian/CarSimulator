@@ -13,14 +13,18 @@ namespace CarSimulator
 
         private readonly DrivingService _drivingService;
         private readonly CarService _carService;
+        private readonly DriverService _driverService;
+        private readonly MessageService _messageService;
 
         public Application()
         {
             _drivingService = new DrivingService();
             _carService = new CarService();
+            _driverService = new DriverService();
+            _messageService = new MessageService();
         }
         public void Run()
-        {
+        {            
             var running = true;
             var instruction = string.Empty;
             
@@ -28,7 +32,7 @@ namespace CarSimulator
             var car = _carService.GetCar(maxTankCapaity);
             
             var maxDrivingCapacity = 5;
-            var driver = new Driver(maxDrivingCapacity);
+            var driver = _driverService.FetchDriver();
 
             while (running)
             {
@@ -38,22 +42,22 @@ namespace CarSimulator
                 switch (selection)
                 {
                     case "1":
-                        instruction = "right";
+                        instruction = "Right";
                         _drivingService.Drive(instruction, car, driver);
                         Console.ReadKey();
                         break;
                     case "2":
-                        instruction = "left";
+                        instruction = "Left";
                         _drivingService.Drive(instruction, car, driver);
                         Console.ReadKey();
                         break;
                     case "3":
-                        instruction = "straight";
+                        instruction = "Straight";
                         _drivingService.Drive(instruction, car, driver);
                         Console.ReadKey();
                         break;
                     case "4":
-                        instruction = "reverse";
+                        instruction = "Reverse";
                         _drivingService.Drive(instruction, car, driver);
                         Console.ReadKey();
                         break;

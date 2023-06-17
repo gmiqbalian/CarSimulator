@@ -8,30 +8,12 @@ namespace ServicesLibrary.Models
 {
     public class Driver
     {
-        public string gender { get; set; }
-        public string email { get; set; }
-        public string phone { get; set; }
-        public string cell { get; set; }
-        public string nat { get; set; }
-        public Name name { get; set; }
-        public class Name
-    {
-        public string title { get; set; }
-        public string first { get; set; }
-        public string last { get; set; }
-    }
-        public DOB dob { get; set; }
-        public class DOB
-    {
-        public string date { get; set; }
-        public string age { get; set; }
-    }
+        public string? Name { get; set; }
+        public string? Gender { get; set; }
+        public string? Age { get; set; }
+        public string? Phone { get; set; }
+        public string? Cell { get; set; }
         public int FatigueLevel { get; set; }
         public int MaxFatigue { get; set; }
-        public Driver(int maxFatigue)
-        {
-            FatigueLevel = 0;
-            MaxFatigue = maxFatigue;
-        }
     }
 }

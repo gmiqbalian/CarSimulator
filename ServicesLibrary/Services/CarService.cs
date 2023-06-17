@@ -34,9 +34,13 @@ namespace ServicesLibrary.Services
             
             return FuelStatus.Full;
         }
+        public void PrintStatusMessage(string instruction)
+        {
+            Print.StatusMessage($"Car is moving: {instruction}");
+        }
         public string Move(string instruction)
         {
-            return $"Car is moving: {instruction}";            
+            return $"Car is moving: {instruction}";
         }
         public string ChangeDirection(string instruction, Car car)
         {            

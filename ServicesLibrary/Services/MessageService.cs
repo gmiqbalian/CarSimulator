@@ -1,7 +1,9 @@
-﻿using ServicesLibrary.Models;
+﻿using ServicesLibrary.Enums;
+using ServicesLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,35 +11,29 @@ namespace ServicesLibrary.Services
 {
     public class MessageService
     {
-        public void PrintErrorMessage(string message)
+        public void PrintStatusMessage(Car car, Driver driver, string instruction)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine(message);
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-        public void PrintWarning(string type, int currentLevel, int maxLevel)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"{type} warning: {currentLevel} / {maxLevel}");
-            Console.ForegroundColor = ConsoleColor.White;
-        }
-        public void PrintCarStatus(string instruction, Car car)
-        {
-            if (instruction == "right")
-                Console.WriteLine("Car is turning right.");
-            else if (instruction == "left")
-                Console.WriteLine("Car is turning left.");
-            else if (instruction == "straight")
-                Console.WriteLine("Car is going straight.");
-            else if (instruction == "reverse")
-                Console.WriteLine("Car is reversing.");
+            Print.StatusMessage($"Car is moving: {instruction}");
+            Print.StatusMessage($"Direction: {car.Direction}");
 
-            Console.WriteLine($"Car direction: {car.Direction}");
+            if (IsFuelWarning(car))
+            {
+                Print.WarningMessage($"Fuel warning: {car.FuelLevel} / {car.MaxFuel}");
+            }
+            if (IsFatigueWarning(driver))
+            {
+                Print.WarningMessage($"Fatigue warning: {driver.FatigueLevel} / {driver.MaxFatigue}");
+            }
+
+        }
+        private bool IsFuelWarning(Car car)
+        {
+            return true;
         }
 
-        internal void PrintMessage(string message)
+        private bool IsFatigueWarning(Driver driver)
         {
-            Console.WriteLine(message);
+            return true;
         }
     }
 }

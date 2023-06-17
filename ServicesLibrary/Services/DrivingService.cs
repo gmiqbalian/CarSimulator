@@ -8,9 +8,8 @@ namespace ServicesLibrary.Services
     {
         private readonly CarService _carService;
         private readonly DriverService _driverService;
-
         public DrivingService()
-        {
+        {          
             _carService = new CarService();
             _driverService = new DriverService();
         }
@@ -31,24 +30,6 @@ namespace ServicesLibrary.Services
 
             car.FuelLevel--;
             driver.FatigueLevel++;
-            
-            var drivingStatus = _carService.Move(instruction);
-            Print.StatusMessage(drivingStatus);
-
-            var directionStatus = _carService.ChangeDirection(instruction, car);
-            Print.StatusMessage(directionStatus);
-
-            _driverService.IncreaseFatigue(driver);
-
-            if (IsFuelWarning(car))
-            {
-                Print.WarningMessage($"Fuel warning: {car.FuelLevel} / {car.MaxFuel}");
-            }
-            if (IsFatigueWarning(driver))
-            {
-                Print.WarningMessage($"Fatigue warning: {driver.FatigueLevel} / {driver.MaxFatigue}");
-            }
-
             return Status.OK;
         }
         public Status TakeRest(Driver driver)
@@ -79,21 +60,11 @@ namespace ServicesLibrary.Services
 
         private bool IsTankEmpty(Car car)
         {
-            return _carService.CheckFuel(car) == FuelStatus.Empty;
-        }
-        private bool IsFuelWarning(Car car)
-        {
-            return _carService.CheckFuel(car) == FuelStatus.Warning;
+            return car.FuelLevel == 0;
         }
         private bool IsTired(Driver driver)
         {
-            return _driverService.CheckFatigueLevel(driver) == FatigueStatus.IsTired;
+            return driver.FatigueLevel == driver.MaxFatigue;
         }
-        private bool IsFatigueWarning(Driver driver)
-        {
-            return _driverService.CheckFatigueLevel(driver) == FatigueStatus.Warning;
-        }
-
-
     }
 }
