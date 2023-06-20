@@ -5,7 +5,7 @@ namespace ServicesLibrary.Services
 {
     public interface IDriverService
     {
-        FatigueStatus CheckFatigueLevel(Driver driver);
-        Driver GetDriver(int fatigueCapacity);
+        Driver GetDriver();
+        void TakeRest(Driver driver);
     }
 }

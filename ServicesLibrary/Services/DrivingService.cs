@@ -10,73 +10,50 @@ namespace ServicesLibrary.Services
         private readonly IDriverService _driverService;
         private readonly IMessageService _messageService;
 
-        public DrivingService(IDriverService driverService, IMessageService messageService, ICarService carService)
+        public DrivingService(
+            IDriverService driverService, 
+            IMessageService messageService, 
+            ICarService carService)
         {
             _driverService = driverService;
             _messageService = messageService;
             _carService = carService;
         }
-        public Car GetCar(int fuelCapacity)
+        public Car SetupCar()
         {
-            return _carService.CreateCar(fuelCapacity);
+            var car = _carService.CreateCar();
+            var driver = _driverService.GetDriver();
+            car.Driver = driver;
+
+            return car;
         }
-        public Driver GetDriver(int fatigueCapacity)
+        public void DriveCommand(Instruction instruction, Car car)
         {
-            return _driverService.GetDriver(fatigueCapacity);
-        }
-        public Status Drive(string instruction, Car car, Driver driver)
-        {
-            if (IsTankEmpty(car))
+            if (car.IsTankEmpty)
             {
                 Print.ErrorMessage("\nPlease refuel before driving.");
-                return Status.Error;
+                return;
             }
 
-            if (IsTired(driver))
+            if (car.Driver.IsTired())
             {
                 Print.ErrorMessage("\nDriver is too tired to drive.");
-                return Status.Error;
+                return;
             }
 
-            _carService.ChangeDirection(instruction, car);
-            car.FuelLevel--;
-            driver.FatigueLevel++;
-            _messageService.PrintStatusMessage(car, driver, instruction);
+            _carService.Drive(car, instruction);
             
-            return Status.OK;
+            _messageService.PrintStatusMessage(car, instruction.ToString());
         }
-        public Status TakeRest(Driver driver)
-        {
-            if (!IsTired(driver))
-            {
-                Print.ErrorMessage("\nDriver is alredy fresh.");
-                return Status.Error;
-            }
-            driver.FatigueLevel = 0;
-            Print.SuccessMessage("\nDriver is now rested and ready to drive.");
-            return Status.OK;
+        public Status RestCommand(Driver driver)
+        {            
+            _driverService.TakeRest(driver);
+            return Status.Success;
         }
-        public Status Refuel(Car car)
+        public Status RefuelCommand(Car car)
         {
-            if (!IsTankEmpty(car))
-            {
-                Print.ErrorMessage("\nTank is already full!");
-                return Status.Error;
-            }
-
-            car.FuelLevel = car.MaxFuel;
-            Print.SuccessMessage("\nTank refueled to full capacity.");
-            return Status.OK;
-        }
-
-
-        private bool IsTankEmpty(Car car)
-        {
-            return car.FuelLevel == 0;
-        }
-        private bool IsTired(Driver driver)
-        {
-            return driver.FatigueLevel == driver.MaxFatigue;
+            _carService.Refuel(car);
+            return Status.Success;
         }
     }
 }

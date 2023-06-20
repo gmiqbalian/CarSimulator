@@ -11,16 +11,18 @@ namespace ServicesLibrary.Services
 {
     public class DriverService : IDriverService
     {
-        public Driver GetDriver(int fatigueCapacity)
+        public Driver GetDriver()
         {
             var driver = new Driver();
 
-            using (var client = new HttpClient())
-            {
-                var json = client.GetStringAsync("https://randomuser.me/api/").Result;
-                dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
-                var result = data?.results[0];
+            using var client = new HttpClient();
 
+            var json = client.GetStringAsync("https://randomuser.me/api/").Result;
+            dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
+            var result = data?.results[0];
+            
+            if(result != null)
+            {
                 driver.Gender = result.gender;
                 driver.Name = result.name.first + " " + result.name.last;
                 driver.Cell = result.cell;
@@ -28,23 +30,18 @@ namespace ServicesLibrary.Services
                 driver.Age = result.age;
             }
 
-            driver.FatigueLevel = 0;
-            driver.MaxFatigue = fatigueCapacity;
-
             return driver;
         }
-        public FatigueStatus CheckFatigueLevel(Driver driver)
+        public void TakeRest(Driver driver)
         {
-            FatigueStatus status = new FatigueStatus();
+            if (!driver.IsTired())
+            {
+                Print.ErrorMessage("\nDriver is alredy fresh.");
+                return;
+            }
 
-            if (driver.FatigueLevel == driver.MaxFatigue)
-                status = FatigueStatus.IsTired;
-            if (driver.FatigueLevel > 3)
-                status = FatigueStatus.Warning;
-            if (driver.FatigueLevel == 0)
-                status = FatigueStatus.Rested;
-
-            return status;
+            driver.TakeRest();
+            Print.SuccessMessage("\nDriver is now rested and ready to drive.");
         }
     }
 }

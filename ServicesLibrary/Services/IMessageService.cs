@@ -4,6 +4,6 @@ namespace ServicesLibrary.Services
 {
     public interface IMessageService
     {
-        void PrintStatusMessage(Car car, Driver driver, string instruction);
+        void PrintStatusMessage(Car car, string instruction);
     }
 }

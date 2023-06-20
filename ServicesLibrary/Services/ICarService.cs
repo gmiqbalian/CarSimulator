@@ -1,4 +1,5 @@
-﻿using ServicesLibrary.Models;
+﻿using ServicesLibrary.Enums;
+using ServicesLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,8 @@ namespace ServicesLibrary.Services
 {
     public interface ICarService
     {
-        Car CreateCar(int fuelCapacity);
-        void ChangeDirection(string instruction, Car car);
+        Car CreateCar();
+        void Drive(Car car, Instruction instruction);
+        void Refuel(Car car);
     }
 }

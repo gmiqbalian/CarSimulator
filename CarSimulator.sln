@@ -5,7 +5,9 @@ VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarSimulator", "CarSimulator\CarSimulator.csproj", "{A0A35F60-1443-45A7-8325-7B2B5752C10E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicesLibrary", "ServicesLibrary\ServicesLibrary.csproj", "{1BC8FC3D-4969-4D94-98D6-55045C9A517D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicesLibrary", "ServicesLibrary\ServicesLibrary.csproj", "{1BC8FC3D-4969-4D94-98D6-55045C9A517D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSimulatorTests", "CarSimulatorTests\CarSimulatorTests.csproj", "{069FB333-709D-43CD-BCDB-4DF4D57C7DA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1BC8FC3D-4969-4D94-98D6-55045C9A517D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BC8FC3D-4969-4D94-98D6-55045C9A517D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BC8FC3D-4969-4D94-98D6-55045C9A517D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{069FB333-709D-43CD-BCDB-4DF4D57C7DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{069FB333-709D-43CD-BCDB-4DF4D57C7DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{069FB333-709D-43CD-BCDB-4DF4D57C7DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{069FB333-709D-43CD-BCDB-4DF4D57C7DA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

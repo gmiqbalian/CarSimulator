@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ServicesLibrary.Enums
 {
-    public enum FatigueStatus
+    public enum Instruction
     {
-        IsTired,
-        Warning,
-        Rested
+        Right,
+        Left,
+        Straight,
+        Reverse
     }
 }

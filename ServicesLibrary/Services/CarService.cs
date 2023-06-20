@@ -1,4 +1,4 @@
-﻿    using ServicesLibrary.Enums;
+﻿using ServicesLibrary.Enums;
 using ServicesLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -12,57 +12,33 @@ namespace ServicesLibrary.Services
     public class CarService : ICarService
     {
         private readonly List<String> Directions = new List<string> { "North", "East", "South", "West" };
-        public Car CreateCar(int fuelCapacity)
+
+        public Car CreateCar()
         {
             var car = new Car();
-
-            car.MaxFuel = fuelCapacity;
-            car.FuelLevel = car.MaxFuel;
-
+                        
             var random = new Random();
             var index = random.Next(Directions.Count());
             car.Direction = Directions[index];
 
             return car;
         }
-        public void ChangeDirection(string instruction, Car car)
-        {            
-            if (instruction.ToLower() == "right")
+        public void Drive(Car car, Instruction instruction)
+        {
+            car.ConsumeFuel();
+            car.ChangeDirection(instruction);
+            car.Driver.IncreaseFatigue();
+        }
+        public void Refuel(Car car)
+        {
+            if (!car.IsTankEmpty)
             {
-                switch (car.Direction)
-                {
-                    case "North":
-                        car.Direction = "East";
-                        break;
-                    case "East":
-                        car.Direction = "South";
-                        break;
-                    case "South":
-                        car.Direction = "West";
-                        break;
-                    case "West":
-                        car.Direction = "North";
-                        break;
-                }
+                Print.ErrorMessage("\nTank is already full!");
+                return;
             }
-            if (instruction.ToLower() == "left")
-            {
-                switch (car.Direction)
-                {
-                    case "North":
-                        car.Direction = "West";
-                        break;
-                    case "West":
-                        car.Direction = "South";
-                        break;
-                    case "South":
-                        car.Direction = "East";
-                        break;
-                    case "East":
-                        car.Direction = "North";
-                        break;
-                }
-            }
+
+            car.Refuel();
+            Print.SuccessMessage("\nTank is refueled to full capacity.");
         }
     }
 }

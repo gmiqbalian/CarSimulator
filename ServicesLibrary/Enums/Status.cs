@@ -8,7 +8,7 @@ namespace ServicesLibrary.Enums
 {
     public enum Status
     {
-        OK,
+        Success,
         Error
     }
 }
