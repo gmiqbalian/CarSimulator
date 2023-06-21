@@ -27,7 +27,7 @@ namespace ServicesLibrary.Services
                 driver.Name = result.name.first + " " + result.name.last;
                 driver.Cell = result.cell;
                 driver.Phone = result.phone;
-                driver.Age = result.age;
+                driver.Age = result.dob.age;
             }
 
             return driver;
