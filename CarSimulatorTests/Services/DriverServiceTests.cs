@@ -39,34 +39,29 @@ namespace CarSimulatorTests.Services
             Assert.IsInstanceOfType(result, typeof(Driver));
         }
         [TestMethod]
-        public void TakeRest_Makes_FatigueLevel_Zero_If_Driver_Is_Tired()
+        public void TakeRest_Returns_True_If_Driver_Is_Tired()
         {
             //Arrange
             var driver = new Driver();
             driver.FatigueLevel = driver.MaxFatigue;
-            var expected = 0;
 
             //Act
-            _sut.TakeRest(driver);
-            var result = driver.FatigueLevel;
+            var result = _sut.TakeRest(driver);
 
             //Assert
-            Assert.AreEqual(expected, result);
+            Assert.IsTrue(result);            
         }
         [TestMethod]
-        public void TakeRest_Not_Successfull_If_Driver_Is_Not_Tired()
+        public void TakeRest_Returns_False_If_Driver_Is_Not_Tired()
         {
             //Arrange
             var driver = new Driver();
-            driver.FatigueLevel = 2;
-            var expected = 2;
 
             //Act
-            _sut.TakeRest(driver);
-            var result = driver.FatigueLevel;
+            var result = _sut.TakeRest(driver);
 
             //Assert
-            Assert.AreEqual(expected, result);
+            Assert.IsFalse(result);
         }
     }
 }

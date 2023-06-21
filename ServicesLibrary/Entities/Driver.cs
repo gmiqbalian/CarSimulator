@@ -15,6 +15,8 @@ namespace ServicesLibrary.Models
         public string? Cell { get; set; }
         public int FatigueLevel { get; set; }
         public int MaxFatigue { get; set; } = 10;
+        public bool IsTired { get => FatigueLevel == MaxFatigue; }
+        public bool IsFresh { get => FatigueLevel == 0; }
         public Driver()
         {
             FatigueLevel = 0;
@@ -22,14 +24,6 @@ namespace ServicesLibrary.Models
         public void TakeRest()
         {
             FatigueLevel = 0;
-        }
-        public bool IsTired()
-        {
-            return FatigueLevel == MaxFatigue;
-        }
-        public bool FatigueWarning()
-        {
-            return FatigueLevel >= 0 && FatigueLevel <= 7;
         }
         public void IncreaseFatigue()
         {

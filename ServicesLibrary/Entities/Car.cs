@@ -13,16 +13,13 @@ namespace ServicesLibrary.Models
         public int FuelLevel { get; protected set; }
         public string? Direction { get; set; }
         public Driver Driver { get; set; }
-        public bool IsTankEmpty 
-        {
-            get => FuelLevel == 0;
-            set => IsTankEmpty = value;
-        }
+        public bool IsTankEmpty { get => FuelLevel == 0; }
+        public bool IsTankFull { get => FuelLevel == MaxFuel; }
         public Car()
         {
             FuelLevel = MaxFuel;
         }
-        public void Refuel ()
+        public void Refuel()
         {
             FuelLevel = MaxFuel;
         }

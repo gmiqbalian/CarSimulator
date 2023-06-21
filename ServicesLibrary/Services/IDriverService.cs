@@ -6,6 +6,6 @@ namespace ServicesLibrary.Services
     public interface IDriverService
     {
         Driver GetDriver();
-        void TakeRest(Driver driver);
+        bool TakeRest(Driver driver);
     }
 }

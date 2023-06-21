@@ -27,32 +27,40 @@ namespace ServicesLibrary.Services
 
             return car;
         }
-        public void DriveCommand(Instruction instruction, Car car)
+        public Status DriveCommand(Instruction instruction, Car car)
         {
             if (car.IsTankEmpty)
             {
                 Print.ErrorMessage("\nPlease refuel before driving.");
-                return;
+                return Status.Error;
             }
 
-            if (car.Driver.IsTired())
+            if (car.Driver.IsTired)
             {
                 Print.ErrorMessage("\nDriver is too tired to drive.");
-                return;
+                return Status.Error;
             }
 
             _carService.Drive(car, instruction);
-            
             _messageService.PrintStatusMessage(car, instruction.ToString());
+            return Status.Success;
         }
         public Status RestCommand(Driver driver)
-        {            
-            _driverService.TakeRest(driver);
+        {
+            var restStatus = _driverService.TakeRest(driver);
+
+            if (restStatus == false)
+                return Status.Error;
+            
             return Status.Success;
         }
         public Status RefuelCommand(Car car)
         {
-            _carService.Refuel(car);
+            var refuelStatus = _carService.Refuel(car);
+
+            if (refuelStatus == false)
+                return Status.Error;
+
             return Status.Success;
         }
     }

@@ -32,16 +32,17 @@ namespace ServicesLibrary.Services
 
             return driver;
         }
-        public void TakeRest(Driver driver)
+        public bool TakeRest(Driver driver)
         {
-            if (!driver.IsTired())
+            if (driver.IsFresh)
             {
-                Print.ErrorMessage("\nDriver is alredy fresh.");
-                return;
+                Print.ErrorMessage("\nDriver is already fresh.");
+                return false;
             }
 
             driver.TakeRest();
             Print.SuccessMessage("\nDriver is now rested and ready to drive.");
+            return true;
         }
     }
 }

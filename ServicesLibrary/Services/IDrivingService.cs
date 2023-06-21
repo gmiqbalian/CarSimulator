@@ -11,7 +11,7 @@ namespace ServicesLibrary.Services
     public interface IDrivingService
     {
         Car SetupCar();
-        void DriveCommand(Instruction instruction, Car car);
+        Status DriveCommand(Instruction instruction, Car car);
         Status RestCommand(Driver driver);
         Status RefuelCommand(Car car);
     }

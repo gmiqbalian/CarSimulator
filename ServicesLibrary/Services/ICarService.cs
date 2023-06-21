@@ -12,6 +12,6 @@ namespace ServicesLibrary.Services
     {
         Car CreateCar();
         void Drive(Car car, Instruction instruction);
-        void Refuel(Car car);
+        bool Refuel(Car car);
     }
 }

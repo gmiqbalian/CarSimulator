@@ -29,16 +29,17 @@ namespace ServicesLibrary.Services
             car.ChangeDirection(instruction);
             car.Driver.IncreaseFatigue();
         }
-        public void Refuel(Car car)
+        public bool Refuel(Car car)
         {
-            if (!car.IsTankEmpty)
+            if (car.IsTankFull)
             {
                 Print.ErrorMessage("\nTank is already full!");
-                return;
+                return false;
             }
 
             car.Refuel();
             Print.SuccessMessage("\nTank is refueled to full capacity.");
+            return true;
         }
     }
 }
