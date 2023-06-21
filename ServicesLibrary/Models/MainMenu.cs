@@ -18,8 +18,11 @@ namespace ServicesLibrary.Models
             Console.WriteLine("4. Reverse");
             Console.WriteLine("5. Take Rest");
             Console.WriteLine("6. Refuel Tank");
-            Console.WriteLine("7. Exit");
+            Console.WriteLine("7. Driver details");
+            Console.WriteLine("8. Exit");
+
             Console.WriteLine();
+
             Console.Write("Please choose an option: ");
         }
     }

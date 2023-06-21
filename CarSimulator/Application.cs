@@ -17,7 +17,7 @@ namespace CarSimulator
             _drivingService = drivingService;
         }
         public void Run()
-        {            
+        {         
             var running = true;
             Instruction instruction;
 
@@ -33,38 +33,43 @@ namespace CarSimulator
                     case "1":
                         instruction = Instruction.Right;
                         _drivingService.DriveCommand(instruction, car);
-                        Console.ReadKey();
+                        Print.PressAnyKey();
                         break;
 
                     case "2":
                         instruction = Instruction.Left;
                         _drivingService.DriveCommand(instruction, car);
-                        Console.ReadKey();
+                        Print.PressAnyKey();
                         break;
 
                     case "3":
                         instruction = Instruction.Straight;
                         _drivingService.DriveCommand(instruction, car);
-                        Console.ReadKey();
+                        Print.PressAnyKey();
                         break;
 
                     case "4":
                         instruction = Instruction.Reverse;
                         _drivingService.DriveCommand(instruction, car);
-                        Console.ReadKey();
+                        Print.PressAnyKey();
                         break;
 
                     case "5":
                         _drivingService.RestCommand(car.Driver);
-                        Console.ReadKey();
+                        Print.PressAnyKey();
                         break;
 
                     case "6":
                         _drivingService.RefuelCommand(car);
-                        Console.ReadKey();
+                        Print.PressAnyKey();
                         break;
                     
                     case "7":
+                        _drivingService.IntroductionCommand(car.Driver);
+                        Print.PressAnyKey();
+                        break;
+                    
+                    case "8":
                         running = false;
                         break;
                     

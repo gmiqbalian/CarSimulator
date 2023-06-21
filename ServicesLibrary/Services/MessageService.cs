@@ -11,10 +11,6 @@ namespace ServicesLibrary.Services
 {
     public class MessageService : IMessageService
     {
-        public void IntroduceDriver()
-        {
-
-        }
         public void PrintStatusMessage(Car car, string instruction)
         {
             Print.StatusMessage($"\nCar is moving: {instruction}");
@@ -28,8 +24,6 @@ namespace ServicesLibrary.Services
             {
                 Print.WarningMessage($"\nFatigue warning: {car.Driver.FatigueLevel} / {car.Driver.MaxFatigue}");
             }
-
-            Print.StatusMessage("\n\nPress any key to continue...");
         }
     }
 }

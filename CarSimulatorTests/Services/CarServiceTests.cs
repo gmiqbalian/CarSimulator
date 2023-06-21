@@ -133,6 +133,22 @@ namespace CarSimulatorTests.Services
             //Assert
             Assert.AreEqual(expectedFuelLevel, resultingFuelLevel);
         }
+        [TestMethod]
+        public void Refuel_Increases_Driver_Fatigue_By_1()
+        {
+            //Arrange
+            var car = new Car();
+            car.Driver = new Driver();
+            var expected = 1;
+            car.ConsumeFuel();
+
+            //Act            
+            _sut.Refuel(car);
+            var result = car.Driver.FatigueLevel;
+
+            //Assert
+            Assert.AreEqual(expected, result);
+        }
 
     }
 }

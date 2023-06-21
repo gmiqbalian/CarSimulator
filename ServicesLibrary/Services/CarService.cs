@@ -37,6 +37,7 @@ namespace ServicesLibrary.Services
                 return false;
             }
 
+            car.Driver.IncreaseFatigue();
             car.Refuel();
             Print.SuccessMessage("\nTank is refueled to full capacity.");
             return true;

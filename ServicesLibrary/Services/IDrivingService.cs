@@ -14,5 +14,6 @@ namespace ServicesLibrary.Services
         Status DriveCommand(Instruction instruction, Car car);
         Status RestCommand(Driver driver);
         Status RefuelCommand(Car car);
+        void IntroductionCommand(Driver driver);
     }
 }

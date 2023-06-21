@@ -29,15 +29,15 @@ namespace ServicesLibrary.Services
         }
         public Status DriveCommand(Instruction instruction, Car car)
         {
-            if (car.IsTankEmpty)
-            {
-                Print.ErrorMessage("\nPlease refuel before driving.");
-                return Status.Error;
-            }
-
             if (car.Driver.IsTired)
             {
                 Print.ErrorMessage("\nDriver is too tired to drive.");
+                return Status.Error;
+            }
+
+            if (car.IsTankEmpty)
+            {
+                Print.ErrorMessage("\nPlease refuel before driving.");
                 return Status.Error;
             }
 
@@ -62,6 +62,13 @@ namespace ServicesLibrary.Services
                 return Status.Error;
 
             return Status.Success;
+        }
+        public void IntroductionCommand(Driver driver)
+        {
+            Print.StatusMessage($"\nName: {driver.Name}");
+            Print.StatusMessage($"\nAge: {driver.Age}");
+            Print.StatusMessage($"\nContact: {driver.Phone}");
+            Print.StatusMessage($"\nFatigue Level: {driver.FatigueLevel} / {driver.MaxFatigue}");
         }
     }
 }

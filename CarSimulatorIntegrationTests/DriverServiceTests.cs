@@ -11,11 +11,11 @@ namespace CarSimulatorIntegrationTests
     [TestClass]
     public class DriverServiceTests
     {
-        private DriverService _driverSerivce;
+        private DriverService _sut;
         [TestInitialize]
         public void Setup()
         {
-            _driverSerivce = new DriverService();
+            _sut = new DriverService();
         }
         [TestMethod]
         public void GetDriver_Returns_Valid_Driver_With_All_Properties()
@@ -23,7 +23,7 @@ namespace CarSimulatorIntegrationTests
             //Arrange
 
             //Act
-            var result = _driverSerivce.GetDriver();
+            var result = _sut.GetDriver();
 
             //Assert
             Assert.IsNotNull(result);

@@ -30,5 +30,10 @@ namespace ServicesLibrary.Models
             Console.Write(message);
             Console.ResetColor();
         }
+        public static void PressAnyKey()
+        {
+            Console.Write("\n\nPress any key to continue...");
+            Console.ReadKey();
+        }
     }
 }
