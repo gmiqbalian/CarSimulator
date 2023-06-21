@@ -108,11 +108,12 @@ namespace CarSimulatorTests.Services
         {
             //Arrange
             var car = new Car();
+            car.Driver = new Driver();
             var expectedFuelLevel = 20;
-
-            //Act
             for (int i = 1; i <= car.MaxFuel; i++)
                 car.ConsumeFuel();
+
+            //Act
             _sut.Refuel(car);
             var resultingFuelLevel = car.FuelLevel;
 

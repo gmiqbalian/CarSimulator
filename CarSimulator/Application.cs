@@ -25,6 +25,8 @@ namespace CarSimulator
 
             while (running)
             {
+                Console.Clear();
+                MainMenu.ShowLogo();
                 MainMenu.ShowMainMenu();
                 var selection = Console.ReadLine();
 

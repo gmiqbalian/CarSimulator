@@ -8,10 +8,21 @@ namespace ServicesLibrary.Models
 {
     public class MainMenu
     {
+        public static void ShowLogo()
+        {
+            string logo =
+            @"
+               _____              _____ _                 _       _             
+              / ____|            / ____(_)               | |     | |            
+             | |     __ _ _ __  | (___  _ _ __ ___  _   _| | __ _| |_ ___  _ __ 
+             | |    / _` | '__|  \___ \| | '_ ` _ \| | | | |/ _` | __/ _ \| '__|
+             | |___| (_| | |     ____) | | | | | | | |_| | | (_| | || (_) | |   
+              \_____\__,_|_|    |_____/|_|_| |_| |_|\__,_|_|\__,_|\__\___/|_|   
+            ";
+            Console.WriteLine(logo);
+        }
         public static void ShowMainMenu()
         {
-            Console.Clear();
-
             Console.WriteLine("1. Drive Right");
             Console.WriteLine("2. Drive Left");
             Console.WriteLine("3. Drive Straight");

@@ -65,10 +65,11 @@ namespace ServicesLibrary.Services
         }
         public void IntroductionCommand(Driver driver)
         {
-            Print.StatusMessage($"\nName: {driver.Name}");
-            Print.StatusMessage($"\nAge: {driver.Age}");
-            Print.StatusMessage($"\nContact: {driver.Phone}");
-            Print.StatusMessage($"\nFatigue Level: {driver.FatigueLevel} / {driver.MaxFatigue}");
+            Print.StatusMessage(
+                $"\nName: {driver.Name}" +
+                $"\nAge: {driver.Age}" +
+                $"\nContact: {driver.Phone}" +
+                $"\nFatigue Level: {driver.FatigueLevel} / {driver.MaxFatigue}");
         }
     }
 }
