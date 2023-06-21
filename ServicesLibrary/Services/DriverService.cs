@@ -21,7 +21,7 @@ namespace ServicesLibrary.Services
             dynamic data = JsonConvert.DeserializeObject<dynamic>(json);
             var result = data?.results[0];
             
-            if(result != null)
+            if(result is not null)
             {
                 driver.Gender = result.gender;
                 driver.Name = result.name.first + " " + result.name.last;

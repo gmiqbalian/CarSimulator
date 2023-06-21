@@ -39,6 +39,18 @@ namespace CarSimulatorTests.Services
             Assert.IsInstanceOfType(result, typeof(Driver));
         }
         [TestMethod]
+        public void GetDriver_Returns_Valid_Driver_With_All_Properties()
+        {
+            //Arrange
+
+            //Act
+            var result = _sut.GetDriver();
+
+            //Assert
+            Assert.IsNotNull(result);
+            Assert.IsFalse(string.IsNullOrEmpty(result.Gender));
+        }
+        [TestMethod]
         public void TakeRest_Returns_True_If_Driver_Is_Tired()
         {
             //Arrange
