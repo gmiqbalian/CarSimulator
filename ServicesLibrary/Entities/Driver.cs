@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,6 +18,7 @@ namespace ServicesLibrary.Models
         public int MaxFatigue { get; set; } = 10;
         public bool IsTired { get => FatigueLevel == MaxFatigue; }
         public bool IsFresh { get => FatigueLevel == 0; }
+        public bool IsFatigueWarning { get => FatigueLevel >= 7; }
         public Driver()
         {
             FatigueLevel = 0;

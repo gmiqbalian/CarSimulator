@@ -15,6 +15,7 @@ namespace ServicesLibrary.Models
         public Driver Driver { get; set; }
         public bool IsTankEmpty { get => FuelLevel == 0; }
         public bool IsTankFull { get => FuelLevel == MaxFuel; }
+        public bool IsFuelWarning { get => FuelLevel >= 0 && FuelLevel <= 5; }
         public Car()
         {
             FuelLevel = MaxFuel;

@@ -69,7 +69,7 @@ namespace CarSimulator
                         break;
                     
                     default:
-                        Console.Write("\n\nPlease choose a valid option");
+                        Print.ErrorMessage("\nPlease choose a valid option");
                         Console.ReadKey();
                         break;
                 }

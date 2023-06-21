@@ -11,30 +11,25 @@ namespace ServicesLibrary.Services
 {
     public class MessageService : IMessageService
     {
+        public void IntroduceDriver()
+        {
+
+        }
         public void PrintStatusMessage(Car car, string instruction)
         {
             Print.StatusMessage($"\nCar is moving: {instruction}");
             Print.StatusMessage($"\nDirection: {car.Direction}");
 
-            if (IsFuelWarning(car))
+            if (car.IsFuelWarning)
             {
                 Print.WarningMessage($"\nFuel warning: {car.FuelLevel} / {car.MaxFuel}");
             }
-            if (IsFatigueWarning(car.Driver))
+            if (car.Driver.IsFatigueWarning)
             {
                 Print.WarningMessage($"\nFatigue warning: {car.Driver.FatigueLevel} / {car.Driver.MaxFatigue}");
             }
 
             Print.StatusMessage("\n\nPress any key to continue...");
-        }
-
-        private bool IsFuelWarning(Car car)
-        {
-            return car.FuelLevel >= 0 && car.FuelLevel <= 5;
-        }
-        private bool IsFatigueWarning(Driver driver)
-        {
-            return driver.FatigueLevel >= 7;
         }
     }
 }
