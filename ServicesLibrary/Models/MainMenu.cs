@@ -21,8 +21,10 @@ namespace ServicesLibrary.Models
             ";
             Console.WriteLine(logo);
         }
-        public static void ShowMenu(int optionsSelected)
+        public static void ShowMenu(int selection)
         {
+            ShowLogo();
+
             var options = new List<String>()
             {
                 "Drive Right",
@@ -38,7 +40,7 @@ namespace ServicesLibrary.Models
             var prefix = string.Empty;
             for (var i = 0; i < options.Count; i++)
             {
-                if (i == optionsSelected) { prefix = ">"; }
+                if (i == selection) { prefix = ">"; }
                 else { prefix = ""; }
 
                 Console.WriteLine($"{prefix} {options[i]}");
@@ -46,28 +48,15 @@ namespace ServicesLibrary.Models
 
             Print.StatusMessage("\nPress \"arrow\" keys to navigate and \"Enter\" to select\n");
         }
-        public static int GetSelection()
+
+        public static int GetSelection(int selection, ConsoleKey keyPressed)
         {
-            ConsoleKey keyPressed;
-            var selectedIndex = 0;
-          
-            do
-            {
-                Console.Clear();
-                ShowLogo();
-                ShowMenu(selectedIndex);
+            if (keyPressed == ConsoleKey.UpArrow)
+                selection = selection == 0 ? 7 : selection - 1;
+            else if (keyPressed == ConsoleKey.DownArrow)
+                selection = selection == 7 ? 0 : selection + 1;
 
-                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-                keyPressed = keyInfo.Key;
-
-                if (keyPressed == ConsoleKey.UpArrow)
-                    selectedIndex = selectedIndex == 0 ? 7 : selectedIndex - 1;
-                else if (keyPressed == ConsoleKey.DownArrow)
-                    selectedIndex = selectedIndex == 7 ? 0 : selectedIndex + 1;
-
-            } while (keyPressed != ConsoleKey.Enter);
-
-            return selectedIndex;
+            return selection;
         }
     }
 }

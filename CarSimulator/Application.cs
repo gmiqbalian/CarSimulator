@@ -18,39 +18,46 @@ namespace CarSimulator
         }
         public void Run()
         {
+            Console.Title = "Car Simulator";
             Console.CursorVisible = false;
             var running = true;
-            Instruction instruction;
 
             var car = _drivingService.SetupCar();
 
             while (running)
             {
-                int selection = MainMenu.GetSelection();
+                ConsoleKey keyPressed;
+                var selection = 0;
+
+                do
+                {
+                    Console.Clear();
+                    MainMenu.ShowMenu(selection);
+                    keyPressed = Console.ReadKey(true).Key;
+                    selection = MainMenu.GetSelection(selection, keyPressed);
+
+                } while (keyPressed != ConsoleKey.Enter);
+                
 
                 switch (selection)
                 {
                     case 0:
-                        instruction = Instruction.Right;
-                        _drivingService.DriveCommand(instruction, car);
+                        _drivingService.DriveCommand(Instruction.Right, car);
                         Print.PressAnyKey();
                         break;
 
                     case 1:
-                        instruction = Instruction.Left;
-                        _drivingService.DriveCommand(instruction, car);
+                        _drivingService.DriveCommand(Instruction.Left, car);
                         Print.PressAnyKey();
                         break;
 
                     case 2:
-                        instruction = Instruction.Straight;
-                        _drivingService.DriveCommand(instruction, car);
+                        _drivingService.DriveCommand(Instruction.Straight, car);
                         Print.PressAnyKey();
                         break;
 
                     case 3:
-                        instruction = Instruction.Reverse;
-                        _drivingService.DriveCommand(instruction, car);
+                        _drivingService.DriveCommand(Instruction.Reverse, car);
                         Print.PressAnyKey();
                         break;
 
