@@ -30,6 +30,13 @@ namespace ServicesLibrary.Models
             Console.Write(message);
             Console.ResetColor();
         }
+        public static void HighlightedMessage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write(message);
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ResetColor();
+        }
         public static void PressAnyKey()
         {
             Console.Write("\n\nPress any key to continue...");

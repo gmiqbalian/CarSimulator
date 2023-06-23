@@ -11,7 +11,7 @@ namespace ServicesLibrary.Services
 {
     public class CarService : ICarService
     {
-        private readonly List<String> Directions = new List<string> { "North", "East", "South", "West" };
+        private readonly List<String> Directions = new List<string> { "North", "East", "South", "West" }; //try to use enum instead
 
         public Car CreateCar()
         {

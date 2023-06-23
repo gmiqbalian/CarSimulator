@@ -17,7 +17,8 @@ namespace CarSimulator
             _drivingService = drivingService;
         }
         public void Run()
-        {         
+        {
+            Console.CursorVisible = false;
             var running = true;
             Instruction instruction;
 
@@ -25,62 +26,53 @@ namespace CarSimulator
 
             while (running)
             {
-                Console.Clear();
-                MainMenu.ShowLogo();
-                MainMenu.ShowMainMenu();
-                var selection = Console.ReadLine();
+                int selection = MainMenu.GetSelection();
 
                 switch (selection)
                 {
-                    case "1":
+                    case 0:
                         instruction = Instruction.Right;
                         _drivingService.DriveCommand(instruction, car);
                         Print.PressAnyKey();
                         break;
 
-                    case "2":
+                    case 1:
                         instruction = Instruction.Left;
                         _drivingService.DriveCommand(instruction, car);
                         Print.PressAnyKey();
                         break;
 
-                    case "3":
+                    case 2:
                         instruction = Instruction.Straight;
                         _drivingService.DriveCommand(instruction, car);
                         Print.PressAnyKey();
                         break;
 
-                    case "4":
+                    case 3:
                         instruction = Instruction.Reverse;
                         _drivingService.DriveCommand(instruction, car);
                         Print.PressAnyKey();
                         break;
 
-                    case "5":
+                    case 4:
                         _drivingService.RestCommand(car.Driver);
                         Print.PressAnyKey();
                         break;
 
-                    case "6":
+                    case 5:
                         _drivingService.RefuelCommand(car);
                         Print.PressAnyKey();
                         break;
-                    
-                    case "7":
+
+                    case 6:
                         _drivingService.IntroductionCommand(car.Driver);
                         Print.PressAnyKey();
                         break;
-                    
-                    case "8":
+
+                    case 7:
                         running = false;
                         break;
-                    
-                    default:
-                        Print.ErrorMessage("\nPlease choose a valid option");
-                        Console.ReadKey();
-                        break;
                 }
-
             }
         }
     }

@@ -21,20 +21,53 @@ namespace ServicesLibrary.Models
             ";
             Console.WriteLine(logo);
         }
-        public static void ShowMainMenu()
+        public static void ShowMenu(int optionsSelected)
         {
-            Console.WriteLine("1. Drive Right");
-            Console.WriteLine("2. Drive Left");
-            Console.WriteLine("3. Drive Straight");
-            Console.WriteLine("4. Reverse");
-            Console.WriteLine("5. Take Rest");
-            Console.WriteLine("6. Refuel Tank");
-            Console.WriteLine("7. Driver details");
-            Console.WriteLine("8. Exit");
+            var options = new List<String>()
+            {
+                "Drive Right",
+                "Drive Left",
+                "Drive Straight",
+                "Reverse",
+                "Take Rest",
+                "Refuel Tank",
+                "Driver details",
+                "Exit"
+            };
+            
+            var prefix = string.Empty;
+            for (var i = 0; i < options.Count; i++)
+            {
+                if (i == optionsSelected) { prefix = ">"; }
+                else { prefix = ""; }
 
-            Console.WriteLine();
+                Console.WriteLine($"{prefix} {options[i]}");
+            }
 
-            Console.Write("Please choose an option: ");
+            Print.StatusMessage("\nPress \"arrow\" keys to navigate and \"Enter\" to select\n");
+        }
+        public static int GetSelection()
+        {
+            ConsoleKey keyPressed;
+            var selectedIndex = 0;
+          
+            do
+            {
+                Console.Clear();
+                ShowLogo();
+                ShowMenu(selectedIndex);
+
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                keyPressed = keyInfo.Key;
+
+                if (keyPressed == ConsoleKey.UpArrow)
+                    selectedIndex = selectedIndex == 0 ? 7 : selectedIndex - 1;
+                else if (keyPressed == ConsoleKey.DownArrow)
+                    selectedIndex = selectedIndex == 7 ? 0 : selectedIndex + 1;
+
+            } while (keyPressed != ConsoleKey.Enter);
+
+            return selectedIndex;
         }
     }
 }
