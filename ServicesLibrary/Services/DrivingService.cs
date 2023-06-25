@@ -41,6 +41,12 @@ namespace ServicesLibrary.Services
                 return Status.Error;
             }
 
+            if(car.Driver.HungerStatus == HungerStatus.Starving)
+            {
+                Print.ErrorMessage("\nDriver is too hungry to driver.");
+                return Status.Error;
+            }
+
             _carService.Drive(car, instruction);
             _messageService.PrintStatusMessage(car, instruction.ToString());
             return Status.Success;
@@ -62,7 +68,7 @@ namespace ServicesLibrary.Services
                 return Status.Error;
 
             return Status.Success;
-        }
+            }
         public void IntroductionCommand(Driver driver)
         {
             Print.StatusMessage(
@@ -70,6 +76,15 @@ namespace ServicesLibrary.Services
                 $"\nAge: {driver.Age}" +
                 $"\nContact: {driver.Phone}" +
                 $"\nFatigue Level: {driver.FatigueLevel} / {driver.MaxFatigue}");
+        }
+        public Status EatCommand(Driver driver)
+        {
+            var status = _driverService.Eat(driver);
+            
+            if (status == false)
+                return Status.Error;
+
+            return Status.Success;
         }
     }
 }

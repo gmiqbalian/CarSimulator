@@ -16,19 +16,23 @@ namespace CarSimulator
         {
             _drivingService = drivingService;
         }
-        public void Run()
+        public Status Run()
         {
             Console.Title = "Car Simulator";
-            Console.CursorVisible = false;
             var running = true;
 
             var car = _drivingService.SetupCar();
-
+            
             while (running)
             {
+                if (car.Driver.HungerLevel == 16)
+                    return Status.Error;
+                
+                Console.CursorVisible = false;
                 ConsoleKey keyPressed;
                 var selection = 0;
 
+                //show menu until selection is made
                 do
                 {
                     Console.Clear();
@@ -39,6 +43,7 @@ namespace CarSimulator
                 } while (keyPressed != ConsoleKey.Enter);
                 
 
+                //call an action according to the option selected above
                 switch (selection)
                 {
                     case 0:
@@ -81,6 +86,8 @@ namespace CarSimulator
                         break;
                 }
             }
+            
+            return Status.Success;
         }
     }
 }

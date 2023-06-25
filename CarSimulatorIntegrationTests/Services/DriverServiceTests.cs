@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarSimulatorIntegrationTests
+namespace CarSimulatorIntegrationTests.Services
 {
     [TestClass]
     public class DriverServiceTests

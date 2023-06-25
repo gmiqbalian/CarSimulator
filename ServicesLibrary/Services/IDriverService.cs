@@ -7,5 +7,7 @@ namespace ServicesLibrary.Services
     {
         Driver GetDriver();
         bool TakeRest(Driver driver);
+        bool Eat(Driver driver);    
+        HungerStatus CheckHunger(Driver driver);
     }
 }

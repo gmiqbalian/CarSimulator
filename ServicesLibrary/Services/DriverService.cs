@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿    using Newtonsoft.Json;
 using ServicesLibrary.Enums;
 using ServicesLibrary.Models;
 using System;
@@ -42,6 +42,21 @@ namespace ServicesLibrary.Services
 
             driver.TakeRest();
             Print.SuccessMessage("\nDriver is now rested and ready to drive.");
+            return true;
+        }
+        public HungerStatus CheckHunger(Driver driver)
+        {
+            return driver.HungerStatus;
+        }
+
+        public bool Eat(Driver driver)
+        {
+            var status = driver.HungerStatus;
+
+            if (status == HungerStatus.Full)
+                return false;
+
+            driver.Eat();
             return true;
         }
     }

@@ -1,4 +1,6 @@
-﻿using ServicesLibrary.Models;
+﻿using Moq;
+using ServicesLibrary.Enums;
+using ServicesLibrary.Models;
 using ServicesLibrary.Services;
 using System;
 using System.Collections.Generic;
@@ -12,8 +14,10 @@ namespace CarSimulatorTests.Services
     public class DriverServiceTests
     {
         private readonly DriverService _sut;
+        private readonly Mock<Driver> _driverMock;
         public DriverServiceTests()
         {
+            _driverMock = new Mock<Driver>();
             _sut = new DriverService();
         }
         [TestMethod]

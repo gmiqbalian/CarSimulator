@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServicesLibrary", "Services
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarSimulatorTests", "CarSimulatorTests\CarSimulatorTests.csproj", "{069FB333-709D-43CD-BCDB-4DF4D57C7DA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSimulatorNUnitTests", "CarSimulatorNUnitTests\CarSimulatorNUnitTests.csproj", "{96072557-6D96-4707-96FD-E06581F048DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarSimulatorNUnitTests", "CarSimulatorNUnitTests\CarSimulatorNUnitTests.csproj", "{96072557-6D96-4707-96FD-E06581F048DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSimulatorIntegrationTests", "CarSimulatorIntegrationTests\CarSimulatorIntegrationTests.csproj", "{0C2C0B8C-B2D9-4165-9A4A-E96E3473BED7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarSimulatorIntegrationTests", "CarSimulatorIntegrationTests\CarSimulatorIntegrationTests.csproj", "{0C2C0B8C-B2D9-4165-9A4A-E96E3473BED7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarSimulatorTestsV2.0", "CarSimulatorTestsV2.0\CarSimulatorTestsV2.0.csproj", "{412AF42B-C75B-4ACC-A7DB-4C2903492636}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{0C2C0B8C-B2D9-4165-9A4A-E96E3473BED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C2C0B8C-B2D9-4165-9A4A-E96E3473BED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C2C0B8C-B2D9-4165-9A4A-E96E3473BED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{412AF42B-C75B-4ACC-A7DB-4C2903492636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{412AF42B-C75B-4ACC-A7DB-4C2903492636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{412AF42B-C75B-4ACC-A7DB-4C2903492636}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{412AF42B-C75B-4ACC-A7DB-4C2903492636}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

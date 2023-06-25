@@ -45,13 +45,18 @@ namespace CarSimulatorTests.Entities
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void ChangeDirection_Returns_Correct_Direction_When_Driving_Right()
+        [DataRow("North", Instruction.Right, "East")]
+        [DataRow("East", Instruction.Right, "South")]
+        [DataRow("South", Instruction.Right, "West")]
+        [DataRow("West", Instruction.Right, "North")]
+        public void ChangeDirection_Returns_Correct_Direction_When_Driving_Right(
+            string currentDirection, Instruction instruction, string expected)
         {
             //Arrange
-            var currentDirection = "North";
+            //var currentDirection = "North";
+            //var instruction = Instruction.Right;
+            //var expected = "East";
             _sut.Direction = currentDirection;
-            var instruction = Instruction.Right;
-            var expected = "East";
 
             //Act
             _sut.ChangeDirection(instruction);
@@ -61,13 +66,15 @@ namespace CarSimulatorTests.Entities
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
-        public void ChangeDirection_Returns_Correct_Direction_When_Driving_Left()
+        [DataRow("North", Instruction.Left, "West")]
+        [DataRow("West", Instruction.Left, "South")]
+        [DataRow("South", Instruction.Left, "East")]
+        [DataRow("East", Instruction.Left, "North")]
+        public void ChangeDirection_Returns_Correct_Direction_When_Driving_Left(
+            string currentDirection, Instruction instruction, string expected)
         {
             //Arrange
-            var currentDirection = "North";
             _sut.Direction = currentDirection;
-            var instruction = Instruction.Left;
-            var expected = "West";
 
             //Act
             _sut.ChangeDirection(instruction);
