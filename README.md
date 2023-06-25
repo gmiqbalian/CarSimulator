@@ -1,5 +1,5 @@
 # CarSimulator
-
+![Project UI](https://github.com/gmiqbalian/CarSimulator/assets/55350558/07280856-46e1-4795-9503-cd8585b0a356)\n
 ## Project Description:
 This a .Net 6 console application that simulates a simple car with a driver assigned to it. Application class is the main class which asks the use input for options and returns the response accordingly. Program class has host builder which injects services to the container and then call the Run method from Application class.
 
@@ -10,7 +10,6 @@ This simple car simulator applcation has one menu with following options:
 3. Refuel Tank: Every time car is driven in any direction or taken to the refuel the tank the fuel level reduces by one level. This command sets the fuel level to maximum fuel capacity.
 4. Driver details: This lets the user to know the details of the driver.
 5. Exit: Exits the application.
-
 
 ## Entities:
 ### Car entity:
