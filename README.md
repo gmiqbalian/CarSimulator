@@ -1,6 +1,6 @@
 # CarSimulator
 
-Project Description:
+## Project Description:
 This a .Net 6 console application that simulates a simple car with a driver assigned to it. Application class is the main class which asks the use input for options and returns the response accordingly. Program class has host builder which injects services to the container and then call the Run method from Application class.
 
 ## Application Overview:
@@ -20,7 +20,7 @@ This simple car simulator applcation has one menu with following options:
 
 ### Driver entity:
 1. Driver details such as name, gender, age, contact are randomly generated and fetched from an external API (https://randomuser.me/api/).
-2. Driver has maximum fatigue capacity upto which driver can drive car. Drive cannot drive once this level is reached.
+2. Driver has maximum fatigue capacity upto which driver can drive car. Drive cannot drive once this level is reached. This is set to 10 by default.
 3. Fatigue level show current fatigue level of the driver. This increases with every action the user asks the driver to take.
 
 ## Services:
@@ -38,5 +38,5 @@ A spearate project uses NUnit testing framework to test Driving Services. The de
 ### 3- Car Simulator Tests - Integration Testing (Ms Test):
 Since driver is fetched from an external API so integration testing is performed to check that the response from API is valid and re-modelled according to the Driver Entity.
 
-#### 4- Car Simulator Tests v2.0 (MS Test):
+### 4- Car Simulator Tests v2.0 (MS Test):
 We assume that the future version (v2) of this application will introduce a driver hunger variable. Every action will increase hunger level and after a certain level of hunger the application will exit. Eating command will reset the hunger level to zero again. This project tests the upcoming extension of this project so as to ensure the application runs fail-free.
