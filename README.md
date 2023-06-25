@@ -19,8 +19,8 @@ This simple car simulator applcation has one menu with following options:
 3. Direction: The direction of the car e.g. North, South, East, Or West. This direction is randomly generated when application runs.
 
 ### Driver entity:
-1. Driver details such as name, gender, age, contact are randomly generated and fetched from an external API.
-2. Driver has maximum fatigue capacity upto which driver can drive car. Drive cannot drive once this level is reached.
+1. Driver details such as name, gender, age, contact are randomly generated and fetched from an external API (https://randomuser.me/api/).
+2. Driver has maximum fatigue capacity upto which driver can drive car. Drive cannot drive once this level is reached. This is set to 10 by default.
 3. Fatigue level show current fatigue level of the driver. This increases with every action the user asks the driver to take.
 
 ## Services:
