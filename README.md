@@ -1,5 +1,5 @@
 # CarSimulator
-![Project UI](https://github.com/gmiqbalian/CarSimulator/assets/55350558/07280856-46e1-4795-9503-cd8585b0a356)\n
+![Project UI](https://github.com/gmiqbalian/CarSimulator/assets/55350558/07280856-46e1-4795-9503-cd8585b0a356)
 ## Project Description:
 This a .Net 6 console application that simulates a simple car with a driver assigned to it. Application class is the main class which asks the use input for options and returns the response accordingly. Program class has host builder which injects services to the container and then call the Run method from Application class.
 
